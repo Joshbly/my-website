@@ -24,21 +24,10 @@ function draw() {
   updateColorIndex(lerpAmt);
   drawSineWave();
   drawText();
-  drawName(); // Call the new function to draw the name
   blendMode(DIFFERENCE);
   image(textLayer, 0, 0);
   blendMode(BLEND);
   t += 0.015;
-}
-function drawName() {
-  textLayer.fill(0); // Set the fill color to black
-  textLayer.textStyle(BOLD); // Set the text style to bold
-  textLayer.textSize(72); // Set the text size to 72
-  let name = "Joshua Blyskal";
-  let textWidth = textLayer.textWidth(name); // Get the width of the text
-  let x = (windowWidth - textWidth) / 2; // Calculate the x-coordinate to center the text
-  let y = windowHeight * 3 / 4; // Calculate the y-coordinate for the lower quarter of the page
-  textLayer.text(name, x, y); // Draw the text
 }
 function updateColorIndex(lerpAmt) {
   if (lerpAmt > 0.99) {
@@ -52,7 +41,7 @@ function drawSineWave() {
   let startX = -width * 0.05; // Start 5% to the left of the viewport
   let endX = width * 1.05; // End 5% to the right of the viewport
   for (let x = startX; x < endX; x++) {
-    amplitude = lerp(amplitude, map(mouseY, 0, height, 0, height/2), 0.000007);
+    amplitude = lerp(amplitude, map(mouseY, 0, height, 0, height/2), 0.000003);
     let y = height/2 + sin(t + x/(100 * (windowWidth/800))) * amplitude;
     buffer.vertex(x, y);
   }
