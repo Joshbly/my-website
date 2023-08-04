@@ -53,7 +53,7 @@ function drawSineWave() {
   let startX = -width * 0.05; // Start 5% to the left of the viewport
   let endX = width * 1.05; // End 5% to the right of the viewport
   for (let x = startX; x < endX; x++) {
-    amplitude = lerp(amplitude, map(mouseY, 0, height, 0, height/2), 0.000003);
+    amplitude = lerp(amplitude, map(mouseY, 0, height, 0, height/2), 0.000007);
     let y = height/2 + sin(t + x/(100 * (windowWidth/800))) * amplitude;
     buffer.vertex(x, y);
   }
