@@ -16,6 +16,7 @@ function setup() {
   textLayer.textStyle(BOLD);
   textLayer.textFont('UnifrakturCook');
   resizeElements();
+  textLayer.textFont('UnifrakturCook', 72);
 }
 function draw() {
   let lerpAmt = (sin(t) + 1) / 2;
@@ -24,10 +25,21 @@ function draw() {
   updateColorIndex(lerpAmt);
   drawSineWave();
   drawText();
+  drawName(); // Call the new function to draw the name
   blendMode(DIFFERENCE);
   image(textLayer, 0, 0);
   blendMode(BLEND);
   t += 0.015;
+}
+function drawName() {
+  textLayer.fill(0); // Set the fill color to black
+  textLayer.textStyle(BOLD); // Set the text style to bold
+  textLayer.textSize(72); // Set the text size to 72
+  let name = "Joshua Blyskal";
+  let textWidth = textLayer.textWidth(name); // Get the width of the text
+  let x = (windowWidth - textWidth) / 2; // Calculate the x-coordinate to center the text
+  let y = windowHeight * 3 / 4; // Calculate the y-coordinate for the lower quarter of the page
+  textLayer.text(name, x, y); // Draw the text
 }
 function updateColorIndex(lerpAmt) {
   if (lerpAmt > 0.99) {
