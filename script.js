@@ -16,7 +16,6 @@ function setup() {
   textLayer.textStyle(BOLD);
   textLayer.textFont('UnifrakturCook');
   resizeElements();
-  textLayer.textFont('UnifrakturCook', 72);
 }
 function draw() {
   let lerpAmt = (sin(t) + 1) / 2;
